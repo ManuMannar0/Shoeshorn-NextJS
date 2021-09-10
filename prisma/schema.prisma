@@ -1,0 +1,17 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model amertabella {
+  indice Int    @id @default(autoincrement())
+  tipo   String @db.Text
+  genere String @db.Text
+  nome   String @db.Text
+  retail String @db.Text
+  outlet String @db.Text
+}
