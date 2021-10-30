@@ -29,13 +29,13 @@ const Shoes = (props) => {
   return (
     <ul>
       {shoes.map((shoe) => {
-        return (
+        if(true){return (
           <Shoe
-            key={uuidv4().toString()}
-            shoe={shoe}
-            deleteShoes={deleteShoes}
+            tipo={shoe.tipo} genere={shoe.genere} nome={shoe.nome} retail={shoe.retail} outlet={shoe.outlet} indice={shoe.indice}
+            //deleteShoes={deleteShoes}
           />
-        );
+        );}
+        
       })}
     </ul>
   );

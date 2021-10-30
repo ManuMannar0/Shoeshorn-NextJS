@@ -2,7 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/api/getAllShoes": "pages/api/getAllShoes.js",
-  "/api/postShoes": "pages/api/postShoes.js",
-  "/": "pages/index.js"
+  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
+  "/": "pages/index.js",
+  "/api/getAllShoes": "pages/api/getAllShoes.js"
 }
