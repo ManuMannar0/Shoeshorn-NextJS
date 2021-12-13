@@ -38,7 +38,7 @@ const Home = (props) => {
   return (
     <>
       <main>
-        <GlobalStyle />
+        {/* <GlobalStyle /> */}
         <FormInsert />
         <Shoes shoes={props.shoesFromServer} />
         {/* <button
