@@ -4,8 +4,7 @@ import FormInsert from "../Components/FormInsert";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { createGlobalStyle } from "styled-components";
-
+import { GlobalStyle } from "../Components/StyledCommon";
 
 const Home = (props) => {
 
@@ -37,8 +36,8 @@ const Home = (props) => {
   };
   return (
     <>
+      <GlobalStyle />
       <main>
-        {/* <GlobalStyle /> */}
         <FormInsert />
         <Shoes shoes={props.shoesFromServer} />
         {/* <button
@@ -53,29 +52,6 @@ const Home = (props) => {
     </>
   );
 };
-
-const GlobalStyle = `
-* {
-  box-sizing: border-box;
-}
-  html,
-  body {
-    padding: 0;
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  }
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-  li{
-    list-style: none;
-  }
-  input{
-    text-transform:uppercase;
-  }
-`
 
 export const getServerSideProps = async () => {
   const res = await fetch("http://localhost:3000/api/getAllShoes");
