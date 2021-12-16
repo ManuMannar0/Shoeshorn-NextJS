@@ -21,7 +21,7 @@ const StyledShoeForSelection = styled.li<{isSelected: boolean}>`
   }
 `
 
-const SelectTemplate = ({isVisible, shoeData}) => {
+const SelectTemplate = ({isVisible, shoe}) => {
   const [template, setTemplate] = useState('Essential');
   const [priceOrPerc, setPriceOrPerc] = useState('0');
   const templateOption = ['Essential', 'SpecialPrice', 'Sales']
@@ -41,14 +41,14 @@ const SelectTemplate = ({isVisible, shoeData}) => {
         {templateOption.map(option => <option value={option}>{option}</option>)}
       </select>
       <Label 
-        shoe={shoeData} 
+        shoe={shoe} 
         template={template}
         priceOrPerc={priceOrPerc} 
       />
     </StyledSelectTemplate>
   )
 }
-const ShoeForSelection = ({shoeData}) => {
+const ShoeForSelection = ({shoe}) => {
   //const deleteShoes = props.deleteShoes;
   const [isSelected, setIsSelected] = useState(false);
 //CAMBIA VAR/CONST IN INGLESE
@@ -61,11 +61,11 @@ const ShoeForSelection = ({shoeData}) => {
         }}
       >
         <div>
-          <p>{shoeData.nome}</p>
-          <p>{shoeData.tipo}</p>
-          <p>{shoeData.genere}</p>
-          <p>retail price: {shoeData.retail}€</p>
-          <p>outlet price: {shoeData.outlet}€</p>
+          <p>{shoe.nome}</p>
+          <p>{shoe.tipo}</p>
+          <p>{shoe.genere}</p>
+          <p>retail price: {shoe.retail}€</p>
+          <p>outlet price: {shoe.outlet}€</p>
           {/* <button
             onClick={(e) => {
               confirm(`Delete ${nome}?`) &&
@@ -79,7 +79,7 @@ const ShoeForSelection = ({shoeData}) => {
       <SelectTemplate 
         key={uuidv4()}
         isVisible={isSelected}
-        shoeData={shoeData}
+        shoe={shoe}
       />
     </>
   );

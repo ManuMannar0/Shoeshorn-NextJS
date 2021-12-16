@@ -7,7 +7,7 @@ const StyledForm = styled.form`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
 `
-const FormInsert = (props) => {
+const Insert = (props) => {
   const [tipo, setTipo] = useState("MAN");
   const [genere, setGenere] = useState("ROAD RUNNING");
   const [nome, setNome] = useState("");
@@ -102,4 +102,4 @@ const FormInsert = (props) => {
   );
 };
 
-export default FormInsert;
+export default Insert;

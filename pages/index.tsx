@@ -1,54 +1,35 @@
-import Head from "next/head";
 import Shoes from "../Components/Shoes";
-import FormInsert from "../Components/FormInsert";
-import { useState } from "react";
-import { useEffect } from "react";
-import { useRouter } from "next/router";
 import { GlobalStyle } from "../Components/StyledCommon";
+import { Provider } from "react-redux";
+import { store } from '../store/store'
+import Search from "../Components/Search";
+import Insert from "../Components/Insert";
+import Print from "../Components/Print";
+import styled from "styled-components";
 
-const Home = (props) => {
+const StyledFixedTop = styled.div`
+  position: fixed;
+  top: 0px;
+  background-color: #ffffffe8;
+`
+const StyledFixedBottom = styled.div`
+  padding-top: 120px;
+`
 
-  //STATE SHOE
-  const [isFilterButtton, setIsFilterButton] = useState(true);
-  const [buttonText, setButtonText] = useState("FILTER");
-
-  //FILTER DA CONVERTIRE
-  // const shoAll = () => {
-  const filter = () => {
-  //   let selectedShoes = document.querySelectorAll("li:not(.selected)");
-  //   for (let shoe of selectedShoes) {
-  //     shoe.style.display = "none";
-  //   }
-  // };
-  //FILTER DA CONVERTIRE
-  // const filterShowall = () => {
-  //   setIsFilterButton(!isFilterButtton);
-  //   switch (isFilterButton) {
-  //     case true:
-  //       setButtonText("SHOW ALL");
-  //       break;
-  //     case false:
-  //       break;
-
-  //     default:
-  //       break;
-  //   }
-  };
+const App = (props) => {
   return (
     <>
       <GlobalStyle />
-      <main>
-        <FormInsert />
-        <Shoes shoes={props.shoesFromServer} />
-        {/* <button
-          onClick={() => {
-            //FILTER DA CONVERTIRE
-            filterShowall();
-          }}
-        >
-          FILTER
-        </button> */}
-      </main>
+      <Provider store={store}>
+        <StyledFixedTop>
+          <Insert />
+          <Search />
+          <Print />
+        </StyledFixedTop>
+        <StyledFixedBottom>
+          <Shoes shoes={props.shoesFromServer} />
+        </StyledFixedBottom>
+      </Provider>
     </>
   );
 };
@@ -61,4 +42,4 @@ export const getServerSideProps = async () => {
   };
 };
 
-export default Home;
+export default App;

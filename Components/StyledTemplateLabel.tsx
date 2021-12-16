@@ -2,9 +2,10 @@ import styled from "styled-components";
 import kids from '../imgs/ico_kids.png'; 
 import man from '../imgs/ico_man.png'; 
 import woman from '../imgs/ico_woman.png'; 
-import roadrunning from '../imgs/thumb_road_running.png'; 
+import roadRunning from '../imgs/thumb_road_running.png'; 
+import trailRunning from '../imgs/thumb_trail_running.png'; 
 import hiking from '../imgs/thumb_hiking.png'; 
-import backpacking from '../imgs/thumb_backpacking.png'; 
+import backPacking from '../imgs/thumb_backpacking.png'; 
 import winter from '../imgs/thumb_winter.png'; 
 import sport from '../imgs/thumb_sport_style.png'; 
 
@@ -42,8 +43,8 @@ const StyledLabel = styled.div`
     height: 100%;
     text-align: center;
     div{
-      padding-top: 2.22rem;
-      font-size: 2rem;
+      padding-top: 2.216px;
+      font-size: 16px;
     } 
   }
   .tre{
@@ -53,32 +54,67 @@ const StyledLabel = styled.div`
     div:nth-child(1){
       font-size: 0.5cm;
       text-decoration: line-through;
-      padding: 0.2rem 0 0.2rem 0;
+      padding: 0.16px 0 0.16px 0;
     }
     div:nth-child(2){
       color: red;
-      padding: 3.2rem 0 0.2rem 0;
+      padding: 3.16px 0 0.16px 0;
       font-size: 0.6cm;
     }
   }
 `
 
-const Label = () => {
+const Label = ({shoe, template, priceOrPerc}) => {
+    let tipoImg = 'noimg';
+    switch (shoe.tipo) {
+        case 'MAN':
+            tipoImg = man.src;
+            break;
+        case 'WOMAN':
+            tipoImg = woman.src;
+            break;
+        case 'KIDS':
+            tipoImg = kids.src;
+            break;
+    }
+
+    let genereImg = 'noimg';
+    switch (shoe.genere) {
+        case 'ROAD RUNNING':
+            genereImg = roadRunning.src;
+            break;
+        case 'TRAIL RUNNING':
+            genereImg = trailRunning.src;
+            break;
+        case 'HIKING':
+            genereImg = hiking.src;
+            break;
+        case 'BACKPACKING':
+            genereImg = backPacking.src;
+            break;
+        case 'WINTER':
+            genereImg = winter.src;
+            break;
+        case 'SPORT':
+            genereImg = sport.src;
+            break;
+    }
+
     return(
         <StyledLabel>
             <div className="zero">
-                <img src={man.src} alt='genre' />
+                <img src={tipoImg} alt='genre' />
             </div>
             <div className="uno">
-                <img src={hiking.src} alt='style' />
-                <div>HIKING</div>
+                <img src={genereImg} alt='style' />
+                <div>{shoe.genere}</div>
             </div>
                 <div className="due">
-                <div>ACRO CHUKKA WR 2</div>
+                <div>{shoe.nome}</div>
             </div>
             <div className="tre">
-                <div>140,00 €</div>
-                <div>91,00 €</div>
+                <div>{shoe.retail}€</div>
+                <div>{shoe.outlet}€</div>
             </div>
         </StyledLabel>
     )

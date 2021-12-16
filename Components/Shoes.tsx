@@ -1,11 +1,12 @@
 import Shoe from "./Shoe";
 import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/router";
-import { useState } from "react";
 import {StyledSection} from './StyledCommon'
+import { useSelector } from "react-redux";
+import { filterSelector } from "../store/selectors";
 
 const Shoes = ({shoes}) => {
-  const [filter, setFilter] = useState('')
+  const filter = useSelector(filterSelector)
   // const router = useRouter();
   // const refreshData = () => {
   //   router.replace(router.asPath);
@@ -30,45 +31,21 @@ const Shoes = ({shoes}) => {
   return (
     <>
     <StyledSection>
-      <input 
-        type="text" 
-        placeholder="search here" 
-        value={filter} 
-        onChange={(e) => setFilter(e.target.value)}
-      />
-    </StyledSection>
-    <StyledSection>
       <ul>
         {
-          shoes.map(shoeData => {
-            if(shoeData.nome.toLowerCase().includes(filter.toLowerCase())){
+          shoes.map(shoe => {
+            if(shoe.nome.toLowerCase().includes(filter.toLowerCase())){
               return(
                 <Shoe
                   key={uuidv4()}
-                  shoeData={shoeData}
+                  shoe={shoe}
                   //deleteShoes={deleteShoes}
                 />
               )
             }
           })
         }
-        {/* {shoes.map((shoeData) => {
-          if(shoeData.nome.includes(filter)){
-            return(
-              <Shoe
-              key={uuidv4()}
-              shoeData={shoeData}
-              //deleteShoes={deleteShoes}
-            />
-            )
-          }
-            }
-          )
-        } */}
       </ul>
-    </StyledSection>
-    <StyledSection>
-      <button onClick={() => false}>PRINT</button>
     </StyledSection>
     </>
   );
